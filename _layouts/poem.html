@@ -1,0 +1,43 @@
+---
+layout: default
+---
+{% assign poems = site.poems | sort: 'date' %}
+{% assign poem_count = poems | size %}
+{% assign current_index = 0 %}
+{% for p in poems %}
+  {% if p.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+{% assign next_index = current_index | plus: 1 %}
+{% assign prev_index = current_index | minus: 1 %}
+
+<div class="wrap poem-page">
+  <a class="back-link" href="{{ '/stihi/' | relative_url }}">← Все стихи</a>
+  <div class="poem-date-top">{{ page.date | date: "%-d %B %Y" }}</div>
+  <h1>{{ page.title }}</h1>
+
+  <div class="poem-text">
+    {{ content }}
+  </div>
+
+  <div class="poem-nav">
+    {% if prev_index >= 0 %}
+      {% assign prev_poem = poems[prev_index] %}
+      <a class="poem-nav-link prev" href="{{ prev_poem.url | relative_url }}">
+        <span class="poem-nav-label">← Предыдущее</span>
+        <span class="poem-nav-title">{{ prev_poem.title }}</span>
+      </a>
+    {% else %}
+      <span></span>
+    {% endif %}
+
+    {% if next_index < poem_count %}
+      {% assign next_poem = poems[next_index] %}
+      <a class="poem-nav-link next" href="{{ next_poem.url | relative_url }}">
+        <span class="poem-nav-label">Следующее →</span>
+        <span class="poem-nav-title">{{ next_poem.title }}</span>
+      </a>
+    {% endif %}
+  </div>
+</div>

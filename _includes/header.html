@@ -1,0 +1,9 @@
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="{{ '/' | relative_url }}">Хэнк Уэнтон</a>
+    <nav class="nav-links">
+      <a href="{{ '/stihi/' | relative_url }}"{% if page.url contains '/stihi/' or page.url == '/stihi.html' %} class="active"{% endif %}>Все стихи</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">☾</button>
+    </nav>
+  </div>
+</header>

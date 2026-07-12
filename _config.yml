@@ -1,0 +1,34 @@
+title: Хэнк Уэнтон
+description: "Стихи Хэнка Уэнтона"
+author: Хэнк Уэнтон
+
+# ВАЖНО: замени на адрес своего сайта после публикации
+# Обычно это https://ТВОЙ_ЛОГИН.github.io/НАЗВАНИЕ_РЕПОЗИТОРИЯ
+url: ""
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: true
+
+collections:
+  poems:
+    output: true
+    permalink: /stihi/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: poems
+    values:
+      layout: poem
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

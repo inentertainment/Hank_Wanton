@@ -1,0 +1,35 @@
+---
+layout: default
+title: Все стихи
+permalink: /stihi/
+---
+{% assign poems = site.poems | sort: 'date' | reverse %}
+
+<div class="wrap toc" style="padding-top: 48px;">
+  <div class="toc-heading">
+    <h2>Все стихи</h2>
+    <span class="toc-count">{{ poems.size }} всего</span>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="poem-search" placeholder="Поиск по названию или тексту…" autocomplete="off">
+  </div>
+
+  <ul class="poem-list" id="poem-list">
+    {% for poem in poems %}
+    <li data-search="{{ poem.title | strip_html | downcase }} {{ poem.content | strip_html | downcase }}">
+      <a class="poem-row" href="{{ poem.url | relative_url }}">
+        <div class="poem-row-top">
+          <span class="poem-title">{{ poem.title }}</span>
+          <span class="poem-date">{{ poem.date | date: "%d.%m.%Y" }}</span>
+        </div>
+        <div class="poem-preview">{{ poem.content | strip_html | truncatewords: 12 }}</div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p class="no-results" id="no-results">Ничего не найдено.</p>
+</div>
+
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>
