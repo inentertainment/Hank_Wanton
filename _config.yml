@@ -4,8 +4,8 @@ author: Хэнк Уэнтон
 
 # ВАЖНО: замени на адрес своего сайта после публикации
 # Обычно это https://ТВОЙ_ЛОГИН.github.io/НАЗВАНИЕ_РЕПОЗИТОРИЯ
-url: ""
-baseurl: ""
+url: "https://inentertainment.github.io"
+baseurl: "/Hank_Wanton"
 
 markdown: kramdown
 kramdown:
